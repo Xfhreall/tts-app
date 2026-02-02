@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Noto_Sans } from "next/font/google";
 import { QueryProvider } from "@/shared/components/query-provider";
+import { baseMetadata, baseViewport } from "@/shared/metadata";
 import "@/styles/globals.css";
 
 const notoSans = Noto_Sans({ variable: "--font-sans" });
@@ -15,10 +16,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "My TTS Gue - Buat & Main Teka Teki Silang",
-  description: "Aplikasi untuk membuat dan memainkan Teka Teki Silang (TTS)",
-};
+export const metadata: Metadata = baseMetadata;
+export const viewport: Viewport = baseViewport;
 
 export default function RootLayout({
   children,
