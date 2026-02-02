@@ -89,7 +89,7 @@ Video menunjukkan:
 
 ```bash
 # Clone repository
-git clone https://github.com/username/tts-app.git
+git clone https://github.com/Xfhreall/tts-app
 cd tts-app
 
 # Install dependencies
