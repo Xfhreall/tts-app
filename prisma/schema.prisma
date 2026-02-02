@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  puzzles   Puzzle[]
+}
+
+model Puzzle {
+  id         String       @id @default(uuid())
+  title      String
+  gridData   Json
+  words      PuzzleWord[]
+  published  Boolean      @default(false)
+  difficulty String       @default("medium")
+  userId     String?
+  user       User?        @relation(fields: [userId], references: [id])
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+}
+
+model PuzzleWord {
+  id        String @id @default(uuid())
+  text      String
+  clue      String
+  direction String
+  startX    Int
+  startY    Int
+  number    Int
+  puzzleId  String
+  puzzle    Puzzle @relation(fields: [puzzleId], references: [id], onDelete: Cascade)
+
+  @@index([puzzleId])
+}

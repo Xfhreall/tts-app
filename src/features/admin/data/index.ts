@@ -1,0 +1,1 @@
+export { getAdminDashboardData } from "./dashboard";
