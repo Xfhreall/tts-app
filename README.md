@@ -4,7 +4,7 @@ Aplikasi pembuat dan pemain Teka Teki Silang (TTS) Indonesia dengan generator gr
 
 ![TTS Indonesia Banner](./docs/banner.png)
 
-## 📋 Deskripsi
+## Deskripsi
 
 TTS Indonesia adalah aplikasi web yang memungkinkan pengguna untuk:
 - **Membuat** puzzle TTS sendiri dengan input kata dan petunjuk
@@ -13,7 +13,7 @@ TTS Indonesia adalah aplikasi web yang memungkinkan pengguna untuk:
 
 Aplikasi ini dilengkapi dengan algoritma otomatis untuk menentukan tata letak kata (mendatar/menurun) berdasarkan intersection huruf yang sama.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Kategori | Teknologi |
 |----------|-----------|
@@ -26,34 +26,34 @@ Aplikasi ini dilengkapi dengan algoritma otomatis untuk menentukan tata letak ka
 | Client State | TanStack Store |
 | Session | Iron Session |
 
-## ✨ Daftar Fitur
+## Daftar Fitur
 
 ### Admin Panel
-- ✅ Form input kata dan petunjuk (5-15 kata)
-- ✅ Auto-generate TTS dengan algoritma intersection
-- ✅ Preview grid real-time sebelum publish
-- ✅ Dashboard daftar puzzle dengan filter & search
-- ✅ Edit & hapus puzzle
-- ✅ Toggle status Published/Draft dengan Switch
+- Form input kata dan petunjuk (5-15 kata)
+- Auto-generate TTS dengan algoritma intersection
+- Preview grid real-time sebelum publish
+- Dashboard daftar puzzle dengan filter & search
+- Edit & hapus puzzle
+- Toggle status Published/Draft dengan Switch
 
 ### Player Interface
-- ✅ Grid TTS interaktif dengan animasi (Framer Motion)
-- ✅ Navigasi keyboard (Arrow keys, Tab untuk ganti arah)
-- ✅ Klik clue untuk fokus ke kata
-- ✅ Validasi jawaban dengan visual feedback (glow effect)
-- ✅ Timer dengan auto-start
-- ✅ Progress tracking (persentase)
-- ✅ Modal completion dengan confetti animation
-- ✅ Star rating berdasarkan waktu penyelesaian
+- Grid TTS interaktif dengan animasi (Framer Motion)
+- Navigasi keyboard (Arrow keys, Tab untuk ganti arah)
+- Klik clue untuk fokus ke kata
+- Validasi jawaban dengan visual feedback (glow effect)
+- Timer dengan auto-start
+- Progress tracking (persentase)
+- Modal completion dengan confetti animation
+- Star rating berdasarkan waktu penyelesaian
 
 ### Extra Features
-- ✅ Dark/Light mode toggle
-- ✅ Fully responsive design (mobile-first)
-- ✅ Puzzle completion tracking (localStorage)
-- ✅ URL sharing untuk setiap puzzle
-- ✅ Sample puzzles tersedia (via seeder)
+- Dark/Light mode toggle
+- Fully responsive design (mobile-first)
+- Puzzle completion tracking (localStorage)
+- URL sharing untuk setiap puzzle
+- Sample puzzles tersedia (via seeder)
 
-## 🖼️ Screenshots
+## Screenshots
 
 ### Halaman Utama
 ![Landing Page](./docs/screenshots/home.png)
@@ -78,7 +78,7 @@ Video menunjukkan:
 4. Memainkan TTS sampai selesai
 5. Modal completion dengan animasi
 
-## 🚀 Cara Menjalankan di Lokal
+## Cara Menjalankan di Lokal
 
 ### Prerequisites
 
@@ -119,7 +119,7 @@ bun run dev
 
 Buka [http://localhost:3000](http://localhost:3000)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 tts-app/
@@ -153,7 +153,7 @@ tts-app/
 
 ---
 
-# 📚 Dokumentasi Algoritma
+# Dokumentasi Algoritma
 
 ## Masalah yang Dihadapi
 
@@ -389,12 +389,6 @@ export function generateCrossword(words: WordInput[]): GeneratedGrid {
 | PUT | `/api/puzzles/[id]` | Update puzzle |
 | DELETE | `/api/puzzles/[id]` | Delete puzzle |
 | POST | `/api/puzzles/generate` | Generate preview grid |
-
----
-
-## 📜 License
-
-MIT
 
 ---
 
