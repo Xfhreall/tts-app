@@ -50,7 +50,6 @@ export function PuzzleTable({ puzzles, onEdit, onDelete }: PuzzleTableProps) {
 
   return (
     <>
-      {/* Mobile Card View */}
       <div className="sm:hidden divide-y">
         {puzzles.map((puzzle) => (
           <div key={puzzle.id} className="p-4">

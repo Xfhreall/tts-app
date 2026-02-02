@@ -77,8 +77,8 @@ export function AdminDashboardContainer() {
   };
 
   return (
-    <div className="min-h-screen">
-      <header className="glass border-b sticky top-0 z-50">
+    <div className="min-h-screen bg-background">
+      <header className="bg-background/95 backdrop-blur-md border-b sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-4">
@@ -121,40 +121,46 @@ export function AdminDashboardContainer() {
       <main className="container mx-auto px-4 sm:px-6 py-4 sm:py-8">
         {/* Stats Grid - Responsive */}
         <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-6 sm:mb-8">
-          <Card className="border-0 shadow-sm">
+          <Card className="bg-card border shadow-sm">
             <CardContent className="p-3 sm:p-5">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                 <div className="hidden sm:flex p-3 rounded-xl bg-primary/10">
                   <Grid3X3 className="w-5 h-5 text-primary" />
                 </div>
                 <div className="text-center sm:text-left">
-                  <p className="text-xl sm:text-2xl font-bold">{stats.totalPuzzles}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">
+                    {stats.totalPuzzles}
+                  </p>
                   <p className="text-xs sm:text-sm text-muted-foreground">Total Puzzle</p>
                 </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="border-0 shadow-sm">
+          <Card className="bg-card border shadow-sm">
             <CardContent className="p-3 sm:p-5">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <div className="hidden sm:flex p-3 rounded-xl bg-green-500/10">
-                  <LayoutGrid className="w-5 h-5 text-green-600" />
+                <div className="hidden sm:flex p-3 rounded-xl bg-green-500/10 dark:bg-green-500/20">
+                  <LayoutGrid className="w-5 h-5 text-green-600 dark:text-green-400" />
                 </div>
                 <div className="text-center sm:text-left">
-                  <p className="text-xl sm:text-2xl font-bold">{stats.publishedCount}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">
+                    {stats.publishedCount}
+                  </p>
                   <p className="text-xs sm:text-sm text-muted-foreground">Published</p>
                 </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="border-0 shadow-sm">
+          <Card className="bg-card border shadow-sm">
             <CardContent className="p-3 sm:p-5">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <div className="hidden sm:flex p-3 rounded-xl bg-amber-500/10">
-                  <Hash className="w-5 h-5 text-amber-600" />
+                <div className="hidden sm:flex p-3 rounded-xl bg-amber-500/10 dark:bg-amber-500/20">
+                  <Hash className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                 </div>
                 <div className="text-center sm:text-left">
-                  <p className="text-xl sm:text-2xl font-bold">{stats.totalWords}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">
+                    {stats.totalWords}
+                  </p>
                   <p className="text-xs sm:text-sm text-muted-foreground">Total Kata</p>
                 </div>
               </div>
@@ -169,7 +175,7 @@ export function AdminDashboardContainer() {
             <PuzzleFiltersPanel />
           </div>
 
-          <Card className="border-0 shadow-sm overflow-hidden">
+          <Card className="bg-card border shadow-sm overflow-hidden">
             {isLoading ? (
               <div className="p-8 text-center text-muted-foreground">
                 <div className="animate-pulse space-y-3">

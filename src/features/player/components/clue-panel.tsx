@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, CircleDot, Lightbulb } from "lucide-react";
+import { ArrowDown, ArrowRight, CircleDot } from "lucide-react";
 import type { PlacedWord } from "@/shared/lib/types";
 import { cn } from "@/shared/lib/utils";
 

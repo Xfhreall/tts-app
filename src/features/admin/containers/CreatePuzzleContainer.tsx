@@ -28,8 +28,8 @@ export function CreatePuzzleContainer() {
   } = useCreatePuzzle();
 
   return (
-    <div className="min-h-screen">
-      <header className="glass border-b sticky top-0 z-50">
+    <div className="min-h-screen bg-background">
+      <header className="bg-background/95 backdrop-blur-md border-b sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-4">
@@ -66,9 +66,9 @@ export function CreatePuzzleContainer() {
         <div className="grid lg:grid-cols-2 gap-4 sm:gap-8">
           {/* Left Column - Form */}
           <div className="space-y-4 sm:space-y-6">
-            <Card className="border-0 shadow-sm">
+            <Card className="bg-card border shadow-sm">
               <CardContent className="p-4 sm:p-6">
-                <Label htmlFor="title" className="text-sm font-medium mb-2 block">
+                <Label htmlFor="title" className="text-sm font-medium mb-2 block text-foreground">
                   Judul Puzzle
                 </Label>
                 <Input
@@ -81,7 +81,7 @@ export function CreatePuzzleContainer() {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-sm">
+            <Card className="bg-card border shadow-sm">
               <CardContent className="p-4 sm:p-6">
                 <WordInputForm
                   words={words}
@@ -115,9 +115,9 @@ export function CreatePuzzleContainer() {
 
           {/* Right Column - Preview */}
           <div className="lg:sticky lg:top-24 h-max">
-            <Card className="border-0 shadow-sm">
+            <Card className="bg-card border shadow-sm">
               <CardHeader className="p-4 sm:p-6 pb-0 sm:pb-0">
-                <h2 className="text-base sm:text-lg font-semibold flex items-center gap-2">
+                <h2 className="text-base sm:text-lg font-semibold flex items-center gap-2 text-foreground">
                   <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   Preview
                   {isGenerating && <Loader2 className="w-4 h-4 animate-spin ml-auto" />}

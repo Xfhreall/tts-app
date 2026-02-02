@@ -28,6 +28,7 @@ export function useLogin() {
 
         if (result.success) {
           const redirect = searchParams.get("redirect") || "/admin";
+          router.refresh();
           router.push(redirect);
         } else {
           setError(result.error || "Login gagal");
