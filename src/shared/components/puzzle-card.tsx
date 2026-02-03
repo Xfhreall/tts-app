@@ -2,9 +2,11 @@
 
 import { Calendar, CheckCircle2, Hash, Play, Trophy } from "lucide-react";
 import Link from "next/link";
+import { DifficultyBadge } from "@/shared/components/difficulty-badge";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
 import { Card, CardContent } from "@/shared/components/ui/card";
+import type { Difficulty } from "@/shared/lib/difficulty";
 
 interface PuzzleCardProps {
   id: string;
@@ -14,6 +16,7 @@ interface PuzzleCardProps {
   published?: boolean;
   showStatus?: boolean;
   isCompleted?: boolean;
+  difficulty?: Difficulty;
 }
 
 export function PuzzleCard({
@@ -24,6 +27,7 @@ export function PuzzleCard({
   published = true,
   showStatus = false,
   isCompleted = false,
+  difficulty,
 }: PuzzleCardProps) {
   const date = new Date(createdAt).toLocaleDateString("id-ID", {
     day: "numeric",
@@ -74,6 +78,7 @@ export function PuzzleCard({
             <Calendar className="w-3.5 h-3.5" />
             <span>{date}</span>
           </div>
+          {difficulty && <DifficultyBadge difficulty={difficulty} />}
         </div>
 
         <Button
