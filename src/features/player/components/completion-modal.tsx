@@ -251,21 +251,21 @@ export function CompletionModal({
               </motion.div>
 
               <motion.div
-                className="flex flex-col sm:flex-row gap-3 pt-2"
+                className="grid grid-cols-2 gap-3 pt-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
               >
-                <Button variant="outline" className="flex-1 gap-2" asChild>
+                <Button variant="outline" className="h-11 gap-2 text-sm font-medium" asChild>
                   <Link href="/">
-                    <ArrowLeft className="w-4 h-4" />
-                    Kembali
+                    <ArrowLeft className="w-4 h-4 shrink-0" />
+                    <span>Kembali</span>
                   </Link>
                 </Button>
-                <Button asChild className="flex-1 gap-2">
+                <Button className="h-11 gap-2 text-sm font-medium" asChild>
                   <Link href="/puzzles">
-                    <RotateCcw className="w-4 h-4" />
-                    Main Lagi
+                    <RotateCcw className="w-4 h-4 shrink-0" />
+                    <span>Main Lagi</span>
                   </Link>
                 </Button>
               </motion.div>
