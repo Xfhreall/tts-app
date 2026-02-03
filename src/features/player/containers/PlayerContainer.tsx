@@ -107,7 +107,7 @@ export function PlayerContainer({ puzzleId }: PlayerContainerProps) {
 
       <main className="container mx-auto px-4 sm:px-6 py-4 sm:py-8">
         <div className="flex flex-col lg:grid lg:grid-cols-[1fr_380px] gap-4 sm:gap-8">
-          <div className="rounded-xl border bg-card p-3 sm:p-6 overflow-x-auto order-1">
+          <div className="rounded-xl border bg-card p-3 sm:p-6 overflow-x-auto order-1 h-max sticky top-28">
             <CrosswordGrid
               grid={gridData.grid}
               words={puzzle.words}
