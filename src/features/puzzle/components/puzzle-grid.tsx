@@ -2,12 +2,14 @@
 
 import { PuzzleCard } from "@/shared/components/puzzle-card";
 import { useCompletedPuzzles } from "@/shared/hooks/use-completed-puzzles";
+import type { Difficulty } from "@/shared/lib/difficulty";
 
 interface Puzzle {
   id: string;
   title: string;
   words: { id: string }[];
   createdAt: string;
+  difficulty: Difficulty;
 }
 
 interface PuzzleGridProps {
@@ -27,6 +29,7 @@ export function PuzzleGrid({ puzzles }: PuzzleGridProps) {
           wordCount={puzzle.words.length}
           createdAt={puzzle.createdAt}
           isCompleted={isLoaded && completedIds.includes(puzzle.id)}
+          difficulty={puzzle.difficulty}
         />
       ))}
     </div>
