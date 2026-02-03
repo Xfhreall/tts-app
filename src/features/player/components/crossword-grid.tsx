@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Eye, EyeOff, Zap } from "lucide-react";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import { Button } from "@/shared/components/ui/button";
 import { useCrosswordGrid } from "@/shared/hooks";
@@ -18,6 +18,7 @@ interface CrosswordGridProps {
 
 export function CrosswordGrid({ grid, words, onComplete, onProgressChange }: CrosswordGridProps) {
   const gridRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const {
     cells,
@@ -27,14 +28,76 @@ export function CrosswordGrid({ grid, words, onComplete, onProgressChange }: Cro
     height,
     isInActiveWord,
     handleCellClick,
+    handleInput,
     checkAnswers,
     hideValidation,
   } = useCrosswordGrid({ grid, words, onComplete, onProgressChange });
 
   const cellSize = Math.min(42, 550 / Math.max(width, height));
 
+  useEffect(() => {
+    if (activeCell && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [activeCell]);
+
+  const handleCellClickWithFocus = useCallback(
+    (x: number, y: number) => {
+      handleCellClick(x, y);
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    },
+    [handleCellClick]
+  );
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+      if (value && /^[a-zA-Z]$/.test(value)) {
+        handleInput(value.toUpperCase());
+      }
+      e.target.value = "";
+    },
+    [handleInput]
+  );
+
+  const handleInputKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Backspace") {
+        e.preventDefault();
+        handleInput("Backspace");
+      } else if (
+        e.key === "ArrowUp" ||
+        e.key === "ArrowDown" ||
+        e.key === "ArrowLeft" ||
+        e.key === "ArrowRight" ||
+        e.key === "Tab"
+      ) {
+        e.preventDefault();
+        handleInput(e.key);
+      }
+    },
+    [handleInput]
+  );
+
   return (
     <div className="space-y-6">
+      <input
+        ref={inputRef}
+        type="text"
+        inputMode="text"
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="characters"
+        spellCheck={false}
+        className="absolute opacity-0 w-0 h-0 pointer-events-none"
+        style={{ position: "absolute", left: "-9999px" }}
+        onChange={handleInputChange}
+        onKeyDown={handleInputKeyDown}
+        aria-label="Crossword input"
+      />
+
       <div className="relative">
         <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full scale-75 opacity-50" />
 
@@ -47,7 +110,8 @@ export function CrosswordGrid({ grid, words, onComplete, onProgressChange }: Cro
           style={{
             gridTemplateColumns: `repeat(${width}, ${cellSize}px)`,
           }}
-          tabIndex={0}
+          tabIndex={-1}
+          onClick={() => inputRef.current?.focus()}
         >
           {cells.map((row, y) =>
             row.map((cell, x) => {
@@ -100,7 +164,7 @@ export function CrosswordGrid({ grid, words, onComplete, onProgressChange }: Cro
                     height: cellSize,
                     fontSize: cellSize * 0.48,
                   }}
-                  onClick={() => handleCellClick(x, y)}
+                  onClick={() => handleCellClickWithFocus(x, y)}
                 >
                   {cell.number && (
                     <span

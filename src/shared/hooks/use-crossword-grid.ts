@@ -125,6 +125,79 @@ export function useCrosswordGrid({
     [cells, activeCell]
   );
 
+  const handleInput = useCallback(
+    (key: string) => {
+      if (!activeCell) return;
+
+      const { x, y } = activeCell;
+
+      if (key === "Tab") {
+        setDirection((d) => (d === "across" ? "down" : "across"));
+        return;
+      }
+
+      if (key === "ArrowUp") {
+        if (y > 0 && !cells[y - 1][x].isBlocked) {
+          setActiveCell({ x, y: y - 1 });
+          setDirection("down");
+        }
+        return;
+      }
+
+      if (key === "ArrowDown") {
+        if (y < height - 1 && !cells[y + 1][x].isBlocked) {
+          setActiveCell({ x, y: y + 1 });
+          setDirection("down");
+        }
+        return;
+      }
+
+      if (key === "ArrowLeft") {
+        if (x > 0 && !cells[y][x - 1].isBlocked) {
+          setActiveCell({ x: x - 1, y });
+          setDirection("across");
+        }
+        return;
+      }
+
+      if (key === "ArrowRight") {
+        if (x < width - 1 && !cells[y][x + 1].isBlocked) {
+          setActiveCell({ x: x + 1, y });
+          setDirection("across");
+        }
+        return;
+      }
+
+      if (key === "Backspace") {
+        setCells((prev) => {
+          const newCells = [...prev];
+          if (newCells[y][x].userLetter === "") {
+            moveToNextCell(x, y, false);
+          } else {
+            newCells[y] = [...newCells[y]];
+            newCells[y][x] = { ...newCells[y][x], userLetter: "" };
+          }
+          return newCells;
+        });
+        return;
+      }
+
+      if (/^[A-Z]$/.test(key)) {
+        setCells((prev) => {
+          const newCells = [...prev];
+          newCells[y] = [...newCells[y]];
+          newCells[y][x] = {
+            ...newCells[y][x],
+            userLetter: key,
+          };
+          return newCells;
+        });
+        moveToNextCell(x, y, true);
+      }
+    },
+    [activeCell, cells, height, width, moveToNextCell]
+  );
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (!activeCell) return;
@@ -270,6 +343,7 @@ export function useCrosswordGrid({
     activeWord,
     isInActiveWord,
     handleCellClick,
+    handleInput,
     checkAnswers,
     hideValidation,
   };

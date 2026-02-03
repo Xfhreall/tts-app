@@ -1,12 +1,12 @@
-# TTS Indonesia - Crossword Puzzle Application
+# My TTS Gue - Crossword Puzzle Application
 
-Aplikasi pembuat dan pemain Teka Teki Silang (TTS) Indonesia dengan generator grid otomatis menggunakan algoritma intersection-based placement.
+Aplikasi pembuat dan pemain Teka Teki Silang (TTSMy ) Gue dengan generator grid otomatis menggunakan algoritma intersection-based placement.
 
-![TTS Indonesia Banner](./docs/banner.png)
+![My TTS Gue Banner](./docs/banner.png)
 
 ## Deskripsi
 
-TTS Indonesia adalah aplikasi web yang memungkinkan pengguna untuk:
+My TTS Gue adalah aplikasi web yang memungkinkan pengguna untuk:
 - **Membuat** puzzle TTS sendiri dengan input kata dan petunjuk
 - **Publish** puzzle agar bisa dimainkan
 - **Memainkan** puzzle TTS secara interaktif dengan keyboard navigation
@@ -69,7 +69,7 @@ Aplikasi ini dilengkapi dengan algoritma otomatis untuk menentukan tata letak ka
 
 ## 🎬 Video Demo
 
-[Link Video Demo](https://youtube.com/watch?v=xxxxx)
+[Link Video Demo](https://youtu.be/5CD-PChOTxU)
 
 Video menunjukkan:
 1. Membuka aplikasi dan halaman utama
