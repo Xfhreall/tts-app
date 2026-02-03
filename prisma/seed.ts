@@ -25,25 +25,43 @@ const samplePuzzles = [
       { text: "SURABAYA", clue: "Kota pahlawan di Jawa Timur" },
       { text: "BANDUNG", clue: "Kota kembang di Jawa Barat" },
       { text: "MEDAN", clue: "Kota terbesar di Sumatera" },
-      { text: "BALI", clue: "Pulau dewata yang terkenal" },
-      { text: "YOGYAKARTA", clue: "Kota pelajar dan budaya" },
+      { text: "MAKASSAR", clue: "Kota terbesar di Sulawesi" },
+      { text: "SEMARANG", clue: "Kota lumpia di Jawa Tengah" },
+      { text: "DENPASAR", clue: "Ibukota provinsi Bali" },
+      { text: "BALIKPAPAN", clue: "Kota minyak di Kalimantan Timur" },
+      { text: "MANADO", clue: "Kota di ujung utara Sulawesi" },
+      { text: "PADANG", clue: "Kota rendang di Sumatera Barat" },
+      { text: "BANJARMASIN", clue: "Kota seribu sungai" },
+      { text: "PONTIANAK", clue: "Kota khatulistiwa" },
+      { text: "SAMARINDA", clue: "Ibukota Kalimantan Timur" },
+      { text: "BATAM", clue: "Kota industri dekat Singapura" },
+      { text: "AMBON", clue: "Ibukota provinsi Maluku" },
     ],
   },
   {
-    title: "Makanan Nusantara",
+    title: "Buah Tropis",
     words: [
-      { text: "RENDANG", clue: "Masakan Padang dari daging sapi" },
-      { text: "SATAY", clue: "Daging tusuk yang dibakar" },
-      { text: "NASI", clue: "Makanan pokok orang Indonesia" },
-      { text: "BAKSO", clue: "Bola daging yang populer" },
-      { text: "GADO", clue: "Sayuran dengan saus kacang" },
-      { text: "TEMPE", clue: "Makanan dari kedelai fermentasi" },
-      { text: "SOTO", clue: "Sup tradisional Indonesia" },
+      { text: "MANGGA", clue: "Buah berwarna kuning oranye yang manis" },
+      { text: "ANGGUR", clue: "Buah kecil yang tumbuh bergerombol" },
+      { text: "RAMBUTAN", clue: "Buah merah berambut" },
+      { text: "MANGGIS", clue: "Ratu buah berwarna ungu" },
+      { text: "NANAS", clue: "Buah bersisik dengan mahkota daun" },
+      { text: "PISANG", clue: "Buah kuning yang melengkung" },
+      { text: "PEPAYA", clue: "Buah oranye dengan biji hitam" },
+      { text: "ALPUKAT", clue: "Buah hijau untuk jus kental" },
+      { text: "APEL", clue: "Buah merah yang renyah" },
+      { text: "JERUK", clue: "Buah oranye kaya vitamin C" },
+      { text: "KELAPA", clue: "Buah dengan air di dalamnya" },
+      { text: "SEMANGKA", clue: "Buah besar berair warna merah" },
     ],
   },
 ];
 
 async function main() {
+  console.log("Deleting all existing puzzles...");
+  await prisma.puzzle.deleteMany({});
+  console.log("Deleted existing datas");
+
   console.log("Seeding database...");
 
   const existingUser = await prisma.user.findUnique({
