@@ -13,6 +13,7 @@ export async function PuzzleListContainer() {
     title: puzzle.title,
     words: puzzle.words.map((w) => ({ id: w.id })),
     createdAt: puzzle.createdAt.toISOString(),
+    difficulty: puzzle.difficulty,
   }));
 
   return (
