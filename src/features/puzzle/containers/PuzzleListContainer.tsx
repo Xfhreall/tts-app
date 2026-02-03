@@ -1,19 +1,19 @@
 import { ArrowLeft, Gamepad2 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
+import type { Difficulty } from "@/shared/lib/difficulty";
 import { PuzzleGrid } from "../components/puzzle-grid";
 import { getPuzzlesList } from "../data/puzzles";
 
 export async function PuzzleListContainer() {
   const puzzles = await getPuzzlesList();
 
-  // Convert to plain objects for client component
   const puzzlesData = puzzles.map((puzzle) => ({
     id: puzzle.id,
     title: puzzle.title,
     words: puzzle.words.map((w) => ({ id: w.id })),
     createdAt: puzzle.createdAt.toISOString(),
-    difficulty: puzzle.difficulty,
+    difficulty: puzzle.difficulty as Difficulty,
   }));
 
   return (
